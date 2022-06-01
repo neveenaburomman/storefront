@@ -9,5 +9,5 @@ we added the “Add to Cart” feature to our application, which will allow our 
 ![Copy of Untitled2](https://user-images.githubusercontent.com/90922969/171061306-10f46311-fee1-4fb4-b990-f11b5dfec954.jpg)
 
  ## LINKS
- - [netlify](https://62953638c5270724bc402583--cozy-unicorn-74cd5b.netlify.app/)
+ - [netlify](https://deploy-preview-3--cozy-unicorn-74cd5b.netlify.app/)
  - [RP](https://github.com/neveenaburomman/storefront/pulls)
