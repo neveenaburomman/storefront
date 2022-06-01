@@ -1,0 +1,27 @@
+section .products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+.img {
+    width: 12em;
+    height: 8em;
+}
+.products .cards {
+    width: 100%;
+    height: 50%;
+    padding: 20px;
+    margin: 20px 50px;
+    box-shadow: 0 0 #585858, 0 0 #585858, 0 0 10px #585858;
+}
+.btnn {
+    display: flex;
+    justify-content: space-around;
+}
+.btnn button {
+    background-color: none;
+    color: darkblue;
+    font-size: 12px;
+}

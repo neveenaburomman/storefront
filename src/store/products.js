@@ -37,7 +37,7 @@ const initialState = {
         
         { name: 'skirt',
          category: 'CLOTHING',
-          price: .20,
+          price: 20,
            inStock: 20 ,
            img: 'https://image.shutterstock.com/image-photo/long-beige-skirt-600w-331643456.jpg'
         }
@@ -48,7 +48,13 @@ export default (state = initialState ,action) =>{
     switch(type){
         case 'ACTIVE' :
             const products = initialState.products.filter(product=> product.category === payload) ;
-            return {products}
+            return {products :products }
+        case 'ADDTOCART' :
+                const updatedProducts = state.products.map(product=> product === payload && product.inStock>0 ? {...product,inStock : product.inStock - 1 } :{... product,inStock:0}) ;
+                return {products :  updatedProducts};
+        case 'DELETE' :
+                const deletedProducts = state.products.map(product=> product === payload&& product.inStock>0 ? {...product,inStock : product.inStock + 1} : product) ;
+                return {products :  deletedProducts};
         default :
         return state;
     }
@@ -59,3 +65,17 @@ export const active = (categoryName) => {
         payload : categoryName,
     }
 }
+
+export const addtoCart = (product) => {
+    return {
+        type : 'ADDTOCART',
+        payload : product,
+    }
+}
+export const deleteFromCart = (product) => {
+    return {
+        type : 'DELETE',
+        payload : product,
+    }
+}
+
