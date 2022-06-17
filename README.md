@@ -15,6 +15,6 @@ Completed the work on the Store by adding view detail for each individual produc
 
  ## LINKS
  - [netlify for phase 3 (Asynchronous Actions)](https://62accc58d1e60d0009602c28--cozy-unicorn-74cd5b.netlify.app/)
-- [netlify for phase 3 ( Redux - Additional Topics)](https://62accc58d1e60d0009602c28--cozy-unicorn-74cd5b.netlify.app/)
+- [netlify for phase 3 ( Redux - Additional Topics)](https://deploy-preview-5--cozy-unicorn-74cd5b.netlify.app/)
 
  - [RP](https://github.com/neveenaburomman/storefront/pulls)
