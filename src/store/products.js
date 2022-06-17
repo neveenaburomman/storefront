@@ -135,7 +135,43 @@ export default (state = initialState, action) => {
                     : product
             );
             return { products: newProducts, display: newDisplayProducts };
-        default:
-            return state;
-    }
+            case 'SET_ACTIVE_ITEM':
+        let product = state.products.map((product) =>
+        payload.name === product.name
+          ? {
+              _id: product._id,
+              name: product.name,
+              url: product.url,
+              category: product.category,
+              price: product.price,
+              inStock: product.inStock ,
+              count: product.count ,
+            }
+          : product
+      );
+      let DisplayProduct = state.display.map((product) =>
+        payload.name === product.name
+          ? {
+              _id: product._id,
+              name: product.name,
+              url: product.url,
+              category: product.category,
+              price: product.price,
+              inStock: product.inStock ,
+              count: product.count ,
+            }
+          : product
+          );
+        return {products:product,display:DisplayProduct };
+    default:
+      return state;
+  }
 };
+export const productDetailPage = data => {
+  return {
+    type:'SET_ACTIVE_ITEM',
+    payload: data
+  }
+}
+        
+
