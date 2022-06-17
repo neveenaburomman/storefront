@@ -1,41 +1,90 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
-import {deleteFromCart} from '../../store/cart';
-import List from '@mui/material/List';
+import { connect } from 'react-redux';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
+import { addtoCart, show, DELETE } from '../../store/actions';
+import { Grid, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+function Cart(props) {
+
+  let display = props.cart.display || [];
+  return (
+    <>
+
+      <Button color="inherit" onClick={() => props.show(!props.cart.show)}>
+        <Box
+          position="absolute"
+          width={130}
+          height={50}
+          left={1000}
+          borderRadius={7}
+          bgcolor="lightpink"
+          alignItems="center"
+          justifyContent="center"
+
+        >
+          <Typography variant="h7" gutterBottom mx={3} alignItems="center">
+            cart ({props.cart.count})
+          </Typography>
+        </Box>
+      </Button>
+      <Drawer
+        anchor="right"
+        open={props.cart.show}
+        variant="permanent"
+        sx={{
+          width: 140,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: 200,
+            boxSizing: 'border-box',
+          },
+        }}
+        onClose={() => props.show(false)}>
+        
+          <Typography variant="h5">Cart</Typography>
+
+        {display.map((product) => {
+          return (
+            <ListItem key={product._id}>
+              <Grid
+                container
+                alignItems="center"
+                justify="space-between"
+                wrap="wrap"
+                spacing={2}
+              >
+                <Typography variant="h6"></Typography>
+                <strong>{product.name}</strong> ({product.count + 1})
+                <Typography variant="body1">
+                  ${(product.count + 1) * product.price}
+                  <DeleteIcon
+                    color="secondary"
+                    onClick={() => props.DELETE(product)}
+                    style={{
+                      cursor: 'pointer',
+                      paddingTop: '5px',
+                    }}
+                  />
+                </Typography>
+              </Grid>
+            </ListItem>
+          );
+        })}
+      </Drawer>
+    </>
+  );
+};
 
 
-function Cart (props){
 
-    return (
-        <section style={{ marginLeft: "1050px",padding:"10px",color:"white",backgroundColor:"grey",width:"300px",alignText:"center"}}>
-            <List >
-            <h4 style={{color:"pink"}}>Shopping Bag</h4>
-
-                {
-                    props.cart.cart.map(product=>{
-                        console.log(product)
-                        return(
-                            <ListItem>
-                                <ListItemText>{product.name}</ListItemText>
-                                <ListItemText>{product.price}JD</ListItemText>
-                                <DeleteIcon onClick={()=> props.deleteFromCart(product)}>X</DeleteIcon>
-                            </ListItem>
-                        )
-                    })
-                }
-            </List >
-        </section>
-    )
+const mapStateToProps = (state) => {
+  return { cart: state.Cart }
 }
+const mapDispatchToProps = { addtoCart, show, DELETE };
 
-const mapStateToProps = (state) =>{
-  return {cart : state.Cart}
-} 
-const mapDispatchToProps = { deleteFromCart } 
-
-export default connect(mapStateToProps , mapDispatchToProps  )(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
