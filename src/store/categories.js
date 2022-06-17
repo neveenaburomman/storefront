@@ -1,33 +1,26 @@
 const initialState = {
     categories : [
-        { name: 'CLOTHING',
-         displayName: 'CLOTHING'
+        { name: 'electronics',
+         displayName: 'Electronics'
          },
 
-        { name: 'ACCESSORIES',
-         displayName: 'ACCESSORIES'
+        { name: 'food',
+         displayName: 'Food'
          },
     ],
-    activeCategory : '',
+    activeCategories : {},
 }
 
 
-export default (state = initialState ,action) =>{
-    const { type , payload } = action;
-
-    switch(type){
-        case 'ACTIVE' :
-            const categories = state.categories;
-            const activeCategory = payload;
-            return {categories , activeCategory}
-        default :
+const categories = (state = initialState, action) => {
+    let { type, payload } = action;
+    switch (type) {
+      case 'ACTIVE':
+        let activeCategories = initialState.categories.find((category)=>category.name === payload);
+        return { categories: initialState.categories, activeCategories};
+      default:
         return state;
     }
-}
-
-export const active = (category) =>{
-    return {
-        type : 'ACTIVE',
-        payload : category
-    }
-}
+  };
+  
+  export default categories;
