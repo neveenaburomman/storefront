@@ -13,5 +13,5 @@ we connected the Store to an API to retrieve live data from your data source by 
 ![Copy of Untitled2](https://user-images.githubusercontent.com/90922969/171061306-10f46311-fee1-4fb4-b990-f11b5dfec954.jpg)
 
  ## LINKS
- - [netlify for phase 3 (Asynchronous Actions)](https://deploy-preview-3--cozy-unicorn-74cd5b.netlify.app/)
+ - [netlify for phase 3 (Asynchronous Actions)](https://62accc58d1e60d0009602c28--cozy-unicorn-74cd5b.netlify.app/)
  - [RP](https://github.com/neveenaburomman/storefront/pulls)
